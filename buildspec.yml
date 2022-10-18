@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: latest
+    commands:
+      - npm install -g typescript
+      - npm install
+  pre_build:
+    commands:
+      - echo Nothing to do in the pre_build phase...
+  build:
+    commands:
+      - npm run build
+      - grep -Fq "Congratulations" index.html
+  post_build:
+    commands:
+      - echo Build completed on `date`
+  cache:
+    paths:
+      - 'node_modules/**/*'
+  artifacts:
+    files:
+      - 'dist/**/*'
+      - 'public/**/*'
+      - package.json
+    discard-paths: no
+
