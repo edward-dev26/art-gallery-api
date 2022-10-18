@@ -13,19 +13,17 @@ phases:
   build:
     commands:
       - npm run build
-      - grep -Fq "Congratulations" index.html
   post_build:
     commands:
       - echo Build completed on `date`
-      -
 cache:
-    paths:
-      - 'node_modules/**/*'
+  paths:
+    - 'node_modules/**/*'
 
 artifacts:
-    files:
-      - 'dist/**/*'
-      - 'public/**/*'
-      - package.json
-    discard-paths: no
+  files:
+    - 'dist/**/*'
+    - 'public/**/*'
+    - package.json
+  discard-paths: no
 
